@@ -51,13 +51,48 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdbool.h"
+bool pushbutton;
 
+void SystemColck_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+ HAL_Int();
+ SystemClock_Config();
+ MX_GPIO_Init();
+
+while (1)
+  {
+    pushbutton=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+    if(pushbutton==0)
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+    	HAL_Delay(2000);
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+    else
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+  }
+```
+![Screenshot 2024-03-21 133432](https://github.com/Anusharonselva/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119405600/b6604cab-4233-4133-b8fd-493774f3df0a)
 
 
 ## Output  :
- 
- 
- 
+
+ # BEFORE:
+ ![Screenshot 2024-03-21 133553](https://github.com/Anusharonselva/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119405600/c1dfbeb6-7cbd-4388-a549-823314690cc2)
+
+ # AFTER:
+ ![Screenshot 2024-03-21 133604](https://github.com/Anusharonselva/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/119405600/6ad2e615-ce93-40be-87f7-d61b6b31162c)
+
  
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
